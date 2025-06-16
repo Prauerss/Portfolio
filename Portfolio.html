@@ -428,7 +428,6 @@
     <button class="scroll-to-top" onclick="scrollToTop()" title="Back to top">↑</button>
 
     <script>
-        // Scroll Reveal Interactivity
         const reveals = document.querySelectorAll('.reveal');
 
         const revealOnScroll = () => {
@@ -447,15 +446,12 @@
 
         window.addEventListener('scroll', revealOnScroll);
 
-        // Project filtering
         const filterButtons = document.querySelectorAll('.filter-btn');
         const projectCards = document.querySelectorAll('.project-card');
 
         filterButtons.forEach(button => {
             button.addEventListener('click', () => {
-                // Remove active class from all buttons
                 filterButtons.forEach(btn => btn.classList.remove('active'));
-                // Add active class to clicked button
                 button.classList.add('active');
 
                 const filter = button.getAttribute('data-filter');
@@ -471,9 +467,7 @@
             });
         });
 
-        // Image modal functionality
         function expandImage(imageSrc) {
-            // Create modal if it doesn't exist
             let modal = document.getElementById('imageModal');
             if (!modal) {
                 modal = document.createElement('div');
@@ -486,7 +480,6 @@
                 document.body.appendChild(modal);
             }
 
-            // Set image source and show modal
             document.getElementById('modalImage').src = imageSrc;
             modal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
@@ -500,7 +493,6 @@
             }
         }
 
-        // Close modal when clicking outside the image
         document.addEventListener('click', function(e) {
             const modal = document.getElementById('imageModal');
             if (modal && e.target === modal) {
@@ -508,14 +500,12 @@
             }
         });
 
-        // Close modal with Escape key
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 closeImageModal();
             }
         });
 
-        // Scroll to top functionality
         function scrollToTop() {
             window.scrollTo({
                 top: 0,
@@ -523,7 +513,6 @@
             });
         }
 
-        // Show/hide scroll to top button
         window.addEventListener('scroll', function() {
             const scrollButton = document.querySelector('.scroll-to-top');
             if (window.pageYOffset > 300) {
@@ -533,21 +522,17 @@
             }
         });
 
-        // CV Download functionality
         function downloadCV() {
             try {
-                // Crear un enlace temporal para forzar la descarga
                 const link = document.createElement('a');
                 link.href = 'https://drive.google.com/uc?export=download&id=1wJkGbj8O_fARQgAIrcifeOy5Ew3Donoj';
                 link.download = 'Pau_Badia_Villanueva_CV.pdf';
                 link.target = '_blank';
                 
-                // Añadir al DOM, hacer click y remover
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
                 
-                // Feedback visual opcional
                 const button = event.target;
                 const originalText = button.innerHTML;
                 button.innerHTML = 'Downloading... ⬇';
