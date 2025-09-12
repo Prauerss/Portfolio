@@ -1743,7 +1743,7 @@
                     <div class="project-image-container">
                         <img src="Images/Elysian_Siege.png" alt="Elysian Siege" class="project-image">
                         <div class="project-overlay">
-                            <button class="view-project-btn" onclick="expandImage('Images/Elysian_Siege.png')">
+                            <button class="view-project-btn" onclick="viewProjectDetails('elysian-siege')">
                                 View Details
                             </button>
                         </div>
@@ -2195,6 +2195,10 @@
                 
                 updateCounter();
             });
+        }
+
+        function viewProjectDetails(projectSlug) {
+            window.location.href = `Projects/${projectSlug}.html`;
         }
 
         // Inicializar todo
