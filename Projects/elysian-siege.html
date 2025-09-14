@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Elysian Siege - Project Details | Pau Badia</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -145,7 +145,9 @@
 
         /* Hero Section */
         .project-hero {
-            height: 60vh;
+            height: auto; 
+            min-height: 90vh; 
+            padding: 4rem 2rem;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -189,22 +191,23 @@
 
         .youtube-video-container {
             position: relative;
-            padding-bottom: 10%; /* relación de aspecto 16:9 */
-            height: 0;
-            overflow: hidden;
+            width: 80%; 
+            max-width: 480px; 
+            margin: 2rem auto; 
+            padding-bottom: 22%; 
             border-radius: 20px;
             box-shadow: var(--shadow-elevation-2);
-            }
+            overflow: hidden;
+        }
 
-            .youtube-video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            }
-
-
+.youtube-video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
 
         .project-tags {
             display: flex;
@@ -227,207 +230,327 @@
             box-shadow: var(--shadow-elevation-1);
         }
 
-        /* Content Sections */
-        .content-section {
-            padding: 4rem 3rem;
-            max-width: 1400px;
+        /* Enhanced Project Overview Section */
+        .enhanced-overview {
+            max-width: 1200px;
             margin: 0 auto;
+            padding: 4rem 3rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
         }
 
         .section-title {
             font-family: 'Orbitron', monospace;
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1.5rem;
             background: var(--primary-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
             filter: drop-shadow(0 4px 8px rgba(102, 126, 234, 0.3));
-        }
-
-        .content-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            margin-bottom: 4rem;
-        }
-
-        .content-text {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: var(--text-secondary);
-        }
-
-        .content-text h3 {
-            color: var(--text-primary);
-            font-family: 'Orbitron', monospace;
-            font-size: 1.5rem;
-            margin: 2rem 0 1rem 0;
-        }
-
-        .content-text ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .content-text li {
             position: relative;
-            padding-left: 2rem;
-            margin-bottom: 1rem;
         }
 
-        .content-text li::before {
-            content: '▶';
+        .section-title::after {
+            content: '';
             position: absolute;
-            left: 0;
-            color: #667eea;
-            font-weight: bold;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--primary-gradient);
+            border-radius: 2px;
         }
 
-        /* Image Gallery */
-        .gallery-container {
+        .section-subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 400;
+        }
+
+        /* Content Container */
+        .content-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
+            gap: 3rem;
+            margin-top: 4rem;
         }
 
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 20px;
+        /* Project Overview Card */
+        .overview-card {
             background: var(--surface);
             border: 1px solid rgba(102, 126, 234, 0.2);
+            border-radius: 25px;
+            padding: 3rem;
+            backdrop-filter: blur(20px);
             box-shadow: var(--shadow-elevation-2);
             transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            cursor: pointer;
-            height: 300px;
+            position: relative;
+            overflow: hidden;
         }
 
-        .gallery-item:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: var(--shadow-elevation-3), var(--shadow-color-primary);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-
-        .gallery-overlay {
+        .overview-card::before {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9), rgba(79, 172, 254, 0.9));
+            height: 4px;
+            background: var(--primary-gradient);
+        }
+
+        .overview-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-elevation-3), var(--shadow-color-primary);
+            background: var(--surface-hover);
+        }
+
+        .card-title {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(1.3rem, 3vw, 1.8rem);
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .card-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--primary-gradient);
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            backdrop-filter: blur(10px);
+            font-size: 1.2rem;
+            flex-shrink: 0;
         }
 
-        .gallery-item:hover .gallery-overlay {
-            opacity: 1;
+        .card-text {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
         }
 
-        .gallery-caption {
-            color: white;
-            font-weight: 600;
-            font-size: 1.1rem;
+        /* My Role Section */
+        .role-section {
+            margin-top: 2rem;
+        }
+
+        .role-title {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            color: var(--text-primary);
+            margin-bottom: 2rem;
             text-align: center;
-            padding: 1rem;
+            position: relative;
         }
 
-        /* Stats Section */
-        .stats-grid {
+        .role-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: var(--accent-gradient);
+            border-radius: 1px;
+        }
+
+        .role-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
-            margin: 3rem 0;
+            margin-top: 2rem;
         }
 
-        .stat-card {
-            background: var(--surface);
-            border: 1px solid rgba(102, 126, 234, 0.2);
+        .role-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(79, 172, 254, 0.2);
             border-radius: 20px;
             padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .role-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 32px rgba(79, 172, 254, 0.2);
+        }
+
+        .role-item-title {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .role-icon {
+            width: 24px;
+            height: 24px;
+            background: var(--accent-gradient);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .role-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-size: clamp(0.9rem, 1.8vw, 1rem);
+        }
+
+        /* Development Challenges & Solutions */
+        .challenges-section {
+            margin-top: 4rem;
+        }
+
+        .challenges-title {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
             text-align: center;
+            margin-bottom: 3rem;
+            background: var(--secondary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 4px 8px rgba(240, 147, 251, 0.3));
+            position: relative;
+        }
+
+        .challenges-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--secondary-gradient);
+            border-radius: 2px;
+        }
+
+        .challenges-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .challenge-card {
+            background: var(--surface);
+            border: 1px solid rgba(240, 147, 251, 0.2);
+            border-radius: 25px;
+            padding: 2.5rem;
             backdrop-filter: blur(20px);
-            box-shadow: var(--shadow-elevation-1);
+            box-shadow: var(--shadow-elevation-2);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .challenge-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--secondary-gradient);
+        }
+
+        .challenge-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow-elevation-3), 0 8px 32px rgba(240, 147, 251, 0.3);
+            background: var(--surface-hover);
+        }
+
+        .challenge-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .challenge-emoji {
+            font-size: 2.5rem;
+            filter: drop-shadow(0 4px 8px rgba(240, 147, 251, 0.3));
             transition: all 0.3s ease;
         }
 
-        .stat-card:hover {
-            background: var(--surface-hover);
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-color-primary);
+        .challenge-info {
+            flex: 1;
         }
 
-        .stat-number {
+        .challenge-title {
             font-family: 'Orbitron', monospace;
-            font-size: 2.5rem;
-            font-weight: 900;
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: clamp(1rem, 2.2vw, 1.3rem);
+            color: var(--text-primary);
             margin-bottom: 0.5rem;
         }
 
-        .stat-label {
-            color: var(--text-secondary);
+        .challenge-type {
+            font-size: 0.9rem;
+            color: rgba(240, 147, 251, 0.8);
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
-        /* Challenges Section */
-        .challenges-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-
-        .challenge-card {
-            background: var(--surface);
-            border: 1px solid rgba(102, 126, 234, 0.2);
-            border-radius: 25px;
-            padding: 2.5rem;
-            backdrop-filter: blur(20px);
-            box-shadow: var(--shadow-elevation-2);
-            transition: all 0.4s ease;
-        }
-
-        .challenge-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-elevation-3), var(--shadow-color-primary);
-        }
-
-        .challenge-icon {
-            font-size: 3rem;
+        .challenge-problem {
+            background: rgba(255, 87, 108, 0.1);
+            border: 1px solid rgba(255, 87, 108, 0.2);
+            border-radius: 15px;
+            padding: 1.5rem;
             margin-bottom: 1.5rem;
-            filter: drop-shadow(0 4px 8px rgba(102, 126, 234, 0.3));
         }
 
-        .challenge-title {
-            font-family: 'Orbitron', monospace;
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
+        .challenge-problem-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #ff576c;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .challenge-description {
+        .challenge-solution {
+            background: rgba(67, 233, 123, 0.1);
+            border: 1px solid rgba(67, 233, 123, 0.2);
+            border-radius: 15px;
+            padding: 1.5rem;
+        }
+
+        .challenge-solution-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #43e97b;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .challenge-text {
             color: var(--text-secondary);
             line-height: 1.6;
+            font-size: clamp(0.9rem, 1.8vw, 1rem);
         }
 
         /* Navigation Footer */
@@ -497,34 +620,66 @@
                 font-size: 1.2rem;
             }
 
-            .content-section {
+            .enhanced-overview {
                 padding: 3rem 2rem;
             }
 
-            .content-grid {
+            .section-header {
+                margin-bottom: 2rem;
+            }
+
+            .overview-card {
+                padding: 2rem;
+            }
+
+            .role-grid {
                 grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .gallery-container {
-                grid-template-columns: 1fr;
-            }
-
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
             }
 
             .challenges-grid {
                 grid-template-columns: 1fr;
             }
 
+            .challenge-card {
+                padding: 2rem;
+            }
+
+            .challenge-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
             .nav-buttons {
                 flex-direction: column;
                 text-align: center;
+            }
+
+            .youtube-video-container {
+                max-width: 100%;
+                margin: 0 1rem;
+            }
+            
+            .youtube-video-container iframe {
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .overview-card {
+                padding: 1.5rem;
+            }
+
+            .challenge-card {
+                padding: 1.5rem;
+            }
+
+            .role-item {
+                padding: 1.5rem;
+            }
+
+            .youtube-video-container iframe {
+                height: 200px;
             }
         }
 
@@ -532,12 +687,34 @@
         .fade-in {
             opacity: 0;
             transform: translateY(30px);
-            transition: all 0.8s ease;
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
         }
 
         /* Modal */
@@ -586,6 +763,38 @@
             background: var(--surface-hover);
             transform: scale(1.1);
         }
+
+        /* Additional styles for enhanced effects */
+        .nav-item.active {
+            background: var(--primary-gradient);
+            color: #ffffff;
+            box-shadow: var(--shadow-color-primary);
+        }
+
+        .project-hero {
+            transition: transform 0.1s ease-out;
+        }
+
+        /* Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .project-hero {
+                transform: none !important;
+            }
+        }
+
+        /* Focus styles for accessibility */
+        .overview-card:focus,
+        .role-item:focus,
+        .challenge-card:focus {
+            outline: 2px solid #667eea;
+            outline-offset: 4px;
+        }
     </style>
 </head>
 <body>
@@ -623,47 +832,182 @@
                 <span class="tag">Team Project</span>
             </div>
 
-            <div style="width: 100%; height: 400px; ">
-  <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/DGbOfJh-bVg?si=hJprOyqCyHX-yWkN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-
+            <div class="youtube-video-container">
+                <iframe src="https://www.youtube-nocookie.com/embed/DGbOfJh-bVg?si=hJprOyqCyHX-yWkN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
         </section>
 
-        <!-- Project Overview -->
-        <section class="section">
-            <h2 class="section-title">Project Overview</h2>
-            <p class="section-text">
-                This project was developed collaboratively by a dedicated team. The game revolves around a central protagonist who must reach her ultimate objective by overcoming a series of challenges. To do so, she relies on a variety of carefully designed mechanics that shape the player’s experience and progression. Each mechanic was created to reinforce the gameplay loop and to make the journey engaging, rewarding, and thematically consistent.
-            </p>
-            </section>
+        <!-- Enhanced Project Overview -->
+        <section class="enhanced-overview">
+            <!-- Project Overview Header -->
+            <div class="section-header fade-in">
+                <h2 class="section-title">Project Overview</h2>
+                <p class="section-subtitle">
+                    A comprehensive look at the development process and challenges faced during the creation of Elysian Siege
+                </p>
+            </div>
 
-            <section class="section">
-            <h2 class="section-title">My Role in the Project</h2>
-            <p class="section-text">
-                Within this project, my primary contributions focused on gameplay programming, audio integration, and particle effects. My tasks included:
-            </p>
+            <div class="content-container">
+                <!-- Main Overview Card -->
+                <div class="overview-card fade-in">
+                    <h3 class="card-title">
+                        
+                        Game Concept & Vision
+                    </h3>
+                    <p class="card-text">
+                        This project was developed collaboratively by a dedicated team. The game revolves around a central protagonist who must reach her ultimate objective by overcoming a series of challenges. To do so, she relies on a variety of carefully designed mechanics that shape the player's experience and progression. Each mechanic was created to reinforce the gameplay loop and to make the journey engaging, rewarding, and thematically consistent.
+                    </p>
 
-            <h3 class="section-subtitle">Enemy Ranged Behavior & Mechanics</h3>
-            <p class="section-text">
-                I was responsible for implementing the behavior and mechanics of the ranged enemy type. This involved designing how the enemy detects the player, when and how it decides to shoot, and how it interacts with the environment during combat encounters. Balancing the enemy’s aggressiveness while ensuring fair gameplay was key to creating tension and excitement for the player.
-            </p>
+                    <!-- My Role Section -->
+                    <div class="role-section">
+                        <h4 class="role-title">My Contributions to the Project</h4>
+                        <div class="role-grid">
+                            <div class="role-item slide-in-left">
+                                <h5 class="role-item-title">
+                                    
+                                    Enemy AI & Combat
+                                </h5>
+                                <p class="role-description">
+                                    Implemented ranged enemy behavior and mechanics, including player detection, shooting decisions, and environmental interactions. Balanced aggressiveness to create engaging combat encounters.
+                                </p>
+                            </div>
 
-            <h3 class="section-subtitle">Audio Implementation</h3>
-            <p class="section-text">
-                I handled the integration of all in-game audio, both in the menus and in the gameplay itself. This included background music, sound effects for actions and events, and feedback sounds that enhance player interaction. The goal was to ensure that audio elements not only complemented the visuals but also heightened immersion and player engagement.
-            </p>
+                            <div class="role-item slide-in-right">
+                                <h5 class="role-item-title">
+                                    
+                                    Audio Integration
+                                </h5>
+                                <p class="role-description">
+                                    Handled complete audio implementation across menus and gameplay, including background music, sound effects, and feedback sounds to enhance player immersion and interaction.
+                                </p>
+                            </div>
 
-            <h3 class="section-subtitle">Particle Effects Creation</h3>
-            <p class="section-text">
-                I contributed to the visual effects of the game by creating and integrating several particle systems. Among these were the explosion effects for defeated NPCs, as well as visual feedback for pickups scattered across the game world. These effects were designed to make interactions more dynamic and visually satisfying for the player.
-            </p>
+                            <div class="role-item slide-in-left">
+                                <h5 class="role-item-title">
+                                    
+                                    Visual Effects
+                                </h5>
+                                <p class="role-description">
+                                    Created and integrated particle systems for explosion effects, NPC defeats, and pickup interactions. Designed to make interactions more dynamic and visually satisfying.
+                                </p>
+                            </div>
 
-            <h3 class="section-subtitle">Pickups & Collection Curves</h3>
-            <p class="section-text">
-                I implemented all of the pickups available in the game, each of which provides the player with unique benefits. To enhance the collection experience, I also programmed the smooth curve animation that triggers when a pickup is collected. This small detail adds polish and makes item collection feel more rewarding and impactful.
-            </p>
-            </section>
+                            <div class="role-item slide-in-right">
+                                <h5 class="role-item-title">
+                                   
+                                    Collectibles System
+                                </h5>
+                                <p class="role-description">
+                                    Implemented all game pickups with unique benefits and programmed smooth curve animations for collection feedback, adding polish and making item collection more rewarding.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
+                <!-- Development Challenges & Solutions -->
+                <div class="challenges-section">
+                    <h3 class="challenges-title">Development Challenges & Solutions</h3>
+                    <div class="challenges-grid">
+                        <div class="challenge-card fade-in">
+                            <div class="challenge-header">
+                                
+                                <div class="challenge-info">
+                                    <h4 class="challenge-title">AI Behavior Balance</h4>
+                                    <div class="challenge-type">Gameplay Programming</div>
+                                </div>
+                            </div>
+                            
+                            <div class="challenge-problem">
+                                <div class="challenge-problem-title"> Challenge</div>
+                                <p class="challenge-text">
+                                    Creating ranged enemies that felt challenging but fair. Initial AI was either too aggressive (frustrating) or too passive (boring), affecting the game's tension and pacing.
+                                </p>
+                            </div>
+
+                            <div class="challenge-solution">
+                                <div class="challenge-solution-title"> Solution</div>
+                                <p class="challenge-text">
+                                    Implemented a dynamic behavior system with multiple states: patrol, detection and combat. Added randomization to shooting patterns to create unpredictable but manageable encounters.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="challenge-card fade-in">
+                            <div class="challenge-header">
+                                
+                                <div class="challenge-info">
+                                    <h4 class="challenge-title">Audio Synchronization</h4>
+                                    <div class="challenge-type">Technical Integration</div>
+                                </div>
+                            </div>
+                            
+                            <div class="challenge-problem">
+                                <div class="challenge-problem-title"> Challenge</div>
+                                <p class="challenge-text">
+                                    Ensuring audio cues matched gameplay events precisely. Delayed or misaligned sound effects broke immersion and made combat feel disconnected from player actions.
+                                </p>
+                            </div>
+
+                            <div class="challenge-solution">
+                                <div class="challenge-solution-title"> Solution</div>
+                                <p class="challenge-text">
+                                    Created a centralized audio manager system. Implemented audio pooling and precise timing mechanisms to ensure perfect synchronization between actions and sounds.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="challenge-card fade-in">
+                            <div class="challenge-header">
+                                
+                                <div class="challenge-info">
+                                    <h4 class="challenge-title">Performance Optimization</h4>
+                                    <div class="challenge-type">Technical Optimization</div>
+                                </div>
+                            </div>
+                            
+                            <div class="challenge-problem">
+                                <div class="challenge-problem-title"> Challenge</div>
+                                <p class="challenge-text">
+                                    Particle effects were causing frame rate drops, especially during intense combat scenarios with multiple explosions and pickups on screen simultaneously.
+                                </p>
+                            </div>
+
+                            <div class="challenge-solution">
+                                <div class="challenge-solution-title"> Solution</div>
+                                <p class="challenge-text">
+                                    Implemented object pooling for particle systems, optimized particle count based on distance from camera.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="challenge-card fade-in">
+                            <div class="challenge-header">
+                                
+                                <div class="challenge-info">
+                                    <h4 class="challenge-title">Pickup Animation Flow</h4>
+                                    <div class="challenge-type">User Experience</div>
+                                </div>
+                            </div>
+                            
+                            <div class="challenge-problem">
+                                <div class="challenge-problem-title"> Challenge</div>
+                                <p class="challenge-text">
+                                    Creating smooth, satisfying pickup animations that felt rewarding without interrupting gameplay flow or causing collision issues with the collection system.
+                                </p>
+                            </div>
+
+                            <div class="challenge-solution">
+                                <div class="challenge-solution-title"> Solution</div>
+                                <p class="challenge-text">
+                                    Developed a curve-based animation system using CurveVector for natural movement, with collision detection disabled during animation and visual feedback that scales with pickup value.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <!-- Navigation -->
         <div class="project-nav">
@@ -684,20 +1028,20 @@
         </div>
 
         <footer style="background: rgba(0, 0, 0, 0.9); border-top: 1px solid rgba(132, 250, 176, 0.2); padding: 2rem 0;">
-        <div style="max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
-            <div style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem;">
-                © Copyright <span style="color: #84fab0; font-weight: 600;">Pau Badia</span> 2025. All Rights Reserved
-            </div>
-            <div style="display: flex; align-items: center; gap: 0.5rem; color: rgba(255, 255, 255, 0.7); font-size: 0.9rem;">
-                <span>Built with:</span>
-                <div style="display: flex; gap: 0.5rem; align-items: center;">
-                    <div style="background: rgba(132, 250, 176, 0.1); border: 1px solid rgba(132, 250, 176, 0.3); border-radius: 6px; padding: 0.3rem 0.6rem; font-size: 0.8rem; color: #84fab0;">HTML5</div>
-                    <div style="background: rgba(132, 250, 176, 0.1); border: 1px solid rgba(132, 250, 176, 0.3); border-radius: 6px; padding: 0.3rem 0.6rem; font-size: 0.8rem; color: #84fab0;">CSS3</div>
-                    <div style="background: rgba(132, 250, 176, 0.1); border: 1px solid rgba(132, 250, 176, 0.3); border-radius: 6px; padding: 0.3rem 0.6rem; font-size: 0.8rem; color: #84fab0;">JavaScript</div>
+            <div style="max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                <div style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem;">
+                    © Copyright <span style="color: #84fab0; font-weight: 600;">Pau Badia</span> 2025. All Rights Reserved
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.5rem; color: rgba(255, 255, 255, 0.7); font-size: 0.9rem;">
+                    <span>Built with:</span>
+                    <div style="display: flex; gap: 0.5rem; align-items: center;">
+                        <div style="background: rgba(132, 250, 176, 0.1); border: 1px solid rgba(132, 250, 176, 0.3); border-radius: 6px; padding: 0.3rem 0.6rem; font-size: 0.8rem; color: #84fab0;">HTML5</div>
+                        <div style="background: rgba(132, 250, 176, 0.1); border: 1px solid rgba(132, 250, 176, 0.3); border-radius: 6px; padding: 0.3rem 0.6rem; font-size: 0.8rem; color: #84fab0;">CSS3</div>
+                        <div style="background: rgba(132, 250, 176, 0.1); border: 1px solid rgba(132, 250, 176, 0.3); border-radius: 6px; padding: 0.3rem 0.6rem; font-size: 0.8rem; color: #84fab0;">JavaScript</div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </footer>
+        </footer>
 
     </main>
 
@@ -708,7 +1052,7 @@
     </div>
 
     <script>
-        // Animaciones de entrada
+        // Intersection Observer for animations
         function observeElements() {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -717,12 +1061,60 @@
                     }
                 });
             }, {
-                threshold: 0.15,
+                threshold: 0.1,
                 rootMargin: '-50px 0px -50px 0px'
             });
 
-            document.querySelectorAll('.fade-in').forEach(el => {
+            // Observe all animated elements
+            document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right').forEach(el => {
                 observer.observe(el);
+            });
+        }
+
+        // Staggered animation for role items
+        function staggerRoleItems() {
+            const roleItems = document.querySelectorAll('.role-item');
+            roleItems.forEach((item, index) => {
+                item.style.animationDelay = `${index * 0.2}s`;
+            });
+        }
+
+        // Staggered animation for challenge cards
+        function staggerChallengeCards() {
+            const challengeCards = document.querySelectorAll('.challenge-card');
+            challengeCards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.3}s`;
+            });
+        }
+
+        // Enhanced hover effects
+        function addEnhancedHoverEffects() {
+            // Role items hover effect
+            document.querySelectorAll('.role-item').forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-6px) scale(1.02)';
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+
+            // Challenge cards enhanced hover
+            document.querySelectorAll('.challenge-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    const emoji = this.querySelector('.challenge-emoji');
+                    if (emoji) {
+                        emoji.style.transform = 'scale(1.2) rotate(10deg)';
+                    }
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    const emoji = this.querySelector('.challenge-emoji');
+                    if (emoji) {
+                        emoji.style.transform = 'scale(1) rotate(0deg)';
+                    }
+                });
             });
         }
 
@@ -782,42 +1174,11 @@
         window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;
             const hero = document.querySelector('.project-hero');
-            const rate = scrolled * -0.5;
-            hero.style.transform = `translateY(${rate}px)`;
+            if (hero) {
+                const rate = scrolled * -0.5;
+                hero.style.transform = `translateY(${rate}px)`;
+            }
         });
-
-        // Counter animation para stats
-        function animateCounters() {
-            const counters = document.querySelectorAll('.stat-number');
-            
-            counters.forEach(counter => {
-                const target = parseInt(counter.textContent.replace('+', ''));
-                let current = 0;
-                const increment = target / 50;
-                
-                const updateCounter = () => {
-                    if (current < target) {
-                        current += increment;
-                        counter.textContent = Math.ceil(current) + (counter.textContent.includes('+') ? '+' : '');
-                        setTimeout(updateCounter, 50);
-                    } else {
-                        counter.textContent = target + (counter.textContent.includes('+') ? '+' : '');
-                    }
-                };
-                
-                // Start animation when stats section comes into view
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            updateCounter();
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                });
-                
-                observer.observe(counter.closest('.stat-card'));
-            });
-        }
 
         // Highlight active nav item
         function highlightActiveSection() {
@@ -855,69 +1216,33 @@
         document.addEventListener('DOMContentLoaded', function() {
             initLoadingAnimation();
             observeElements();
-            animateCounters();
+            staggerRoleItems();
+            staggerChallengeCards();
+            addEnhancedHoverEffects();
             highlightActiveSection();
             
             // Initial fade-in animation
             setTimeout(() => {
-                document.querySelectorAll('.fade-in').forEach((el, index) => {
+                document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right').forEach((el, index) => {
                     setTimeout(() => {
-                        el.classList.add('visible');
-                    }, index * 200);
+                        if (el.getBoundingClientRect().top < window.innerHeight) {
+                            el.classList.add('visible');
+                        }
+                    }, index * 100);
                 });
-            }, 500);
+            }, 300);
         });
 
-        // Add hover effects to gallery items
-        document.querySelectorAll('.gallery-item').forEach(item => {
-            item.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-10px) scale(1.02)';
-            });
-            
-            item.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
-            });
+        // Keyboard accessibility
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Tab') {
+                document.body.classList.add('keyboard-nav');
+            }
         });
 
-        // Add active state styles
-        const style = document.createElement('style');
-        style.textContent = `
-            .nav-item.active {
-                background: var(--primary-gradient);
-                color: #ffffff;
-                box-shadow: var(--shadow-color-primary);
-            }
-            
-            .project-hero {
-                transition: transform 0.1s ease-out;
-            }
-            
-            .stat-number {
-                transition: all 0.3s ease;
-            }
-            
-            .challenge-card:hover .challenge-icon {
-                transform: scale(1.1);
-                transition: transform 0.3s ease;
-            }
-            
-            .gallery-item {
-                transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            }
-            
-            @media (prefers-reduced-motion: reduce) {
-                *, *::before, *::after {
-                    animation-duration: 0.01ms !important;
-                    animation-iteration-count: 1 !important;
-                    transition-duration: 0.01ms !important;
-                }
-                
-                .project-hero {
-                    transform: none !important;
-                }
-            }
-        `;
-        document.head.appendChild(style);
+        document.addEventListener('mousedown', function() {
+            document.body.classList.remove('keyboard-nav');
+        });
     </script>
 </body>
 </html>
